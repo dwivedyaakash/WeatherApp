@@ -15,10 +15,10 @@ class WeatherViewModel : ViewModel() {
     private val _weatherData = MutableLiveData<WeatherDataResponse>()
     val weatherData: LiveData<WeatherDataResponse> get() = _weatherData
 
-    fun fetchWeatherData(latitude: Double, longitude: Double, apiKey: String) {
+    fun fetchWeatherData(latitude: Double?, longitude: Double?, city: String?, apiKey: String) {
         viewModelScope.launch {
             try {
-                val response = repository.getWeatherData(latitude, longitude, apiKey)
+                val response = repository.getWeatherData(latitude, longitude, city, apiKey)
                 if (response.isSuccessful) {
                     _weatherData.value = response.body()
                 } else {

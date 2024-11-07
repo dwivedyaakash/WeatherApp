@@ -41,7 +41,7 @@ fun WeatherHomeScreen() {
     // Fetch weather data api call
     LaunchedEffect(locationData) {
         if (locationData.latitude != 0.0 && locationData.longitude != 0.0) {
-            viewModel.fetchWeatherData(locationData.latitude, locationData.longitude, apiKey)
+            viewModel.fetchWeatherData(locationData.latitude, locationData.longitude, null, apiKey)
         }
     }
 

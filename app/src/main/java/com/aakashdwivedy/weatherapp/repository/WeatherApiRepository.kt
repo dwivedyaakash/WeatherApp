@@ -8,10 +8,11 @@ class WeatherApiRepository {
     private val weatherApiService = RetrofitInstance.weatherApiService
 
     suspend fun getWeatherData(
-        latitude: Double,
-        longitude: Double,
+        latitude: Double?,
+        longitude: Double?,
+        city: String?,
         apiKey: String
     ): Response<WeatherDataResponse> {
-        return weatherApiService.getWeatherData(latitude, longitude, apiKey)
+        return weatherApiService.getWeatherData(latitude, longitude, city, apiKey)
     }
 }
