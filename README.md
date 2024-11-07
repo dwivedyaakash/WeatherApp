@@ -6,5 +6,6 @@
 - Navigation in Jetpack Compose
 - Location permission handling
 - Fetching current location (latitude & longitude)
-- API call using MVVM pattern
 - Loading screen
+- API call using MVVM pattern
+- Search weather data by city name
