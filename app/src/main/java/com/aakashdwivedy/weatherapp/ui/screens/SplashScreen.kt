@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import com.aakashdwivedy.weatherapp.R
+import com.aakashdwivedy.weatherapp.ui.theme.BgColor
 import kotlinx.coroutines.delay
 
 @Composable
@@ -49,11 +50,7 @@ fun SplashScreen(modifier: Modifier, finishAnimation: () -> Unit) {
             .fillMaxSize()
             .background(
                 brush = Brush.verticalGradient(
-                    colors = listOf(
-                        Color.Black,
-                        Color.DarkGray,
-                        Color.Black
-                    )
+                    colors = listOf(Color.White, BgColor)
                 )
             ),
         verticalArrangement = Arrangement.Center,

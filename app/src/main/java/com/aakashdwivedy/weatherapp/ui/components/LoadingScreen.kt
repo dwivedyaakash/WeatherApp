@@ -20,10 +20,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
-import com.aakashdwivedy.weatherapp.ui.theme.BlueLoader
+import com.aakashdwivedy.weatherapp.ui.theme.BgColor
 
 @Composable
 fun LoadingScreen() {
@@ -46,7 +47,11 @@ fun LoadingScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White),
+            .background(
+                brush = Brush.verticalGradient(
+                    colors = listOf(Color.White, BgColor)
+                )
+            ),
         contentAlignment = Alignment.Center
     ) {
         Canvas(
@@ -68,7 +73,7 @@ fun LoadingScreen() {
             // Draw progress arc
             val sweepAngle = 360 * 0.7f
             drawArc(
-                color = BlueLoader,
+                color = BgColor,
                 startAngle = -90f,
                 sweepAngle = sweepAngle,
                 useCenter = false,
