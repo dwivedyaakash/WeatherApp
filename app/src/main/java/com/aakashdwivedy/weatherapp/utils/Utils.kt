@@ -15,6 +15,6 @@ fun getTempInCelsius(temp: Double): String {
 fun getFormattedTime(timestamp: Int): String {
     val instant = Instant.ofEpochSecond(timestamp.toLong())
     val formatter = DateTimeFormatter.ofPattern("HH:mm a")
-        .withZone(ZoneId.of("UTC"))
+        .withZone(ZoneId.systemDefault())
     return formatter.format(instant)
 }
