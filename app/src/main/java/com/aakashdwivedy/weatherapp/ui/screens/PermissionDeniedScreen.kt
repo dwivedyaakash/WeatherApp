@@ -1,4 +1,4 @@
-package com.aakashdwivedy.weatherapp.ui.components
+package com.aakashdwivedy.weatherapp.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

@@ -7,3 +7,4 @@
 - Location permission handling
 - Fetching current location (latitude & longitude)
 - API call using MVVM pattern
+- Loading screen

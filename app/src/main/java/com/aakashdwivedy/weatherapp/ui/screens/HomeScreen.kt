@@ -10,8 +10,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.navigation.NavHostController
-import com.aakashdwivedy.weatherapp.ui.components.PermissionDeniedScreen
-import com.aakashdwivedy.weatherapp.ui.components.WeatherHomeScreen
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
