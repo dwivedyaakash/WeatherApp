@@ -1,5 +1,9 @@
 # Android Weather App in Jetpack Compose
+
 ## Implemented:
-- Splash Screen
-- Navigation
-- Location permission and fetching current location
+
+- Custom Splash Screen
+- Navigation in Jetpack Compose
+- Location permission handling
+- Fetching current location (latitude & longitude)
+- API call using MVVM pattern
