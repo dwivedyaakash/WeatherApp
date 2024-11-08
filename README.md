@@ -12,5 +12,6 @@
 
 ## Resources:
 
-- [API](https://openweathermap.org/current)
+- [Weather Data API](https://openweathermap.org/current)
+- [Forecast API](https://api.open-meteo.com/v1/)
 - [Drawables](https://www.flaticon.com/)
