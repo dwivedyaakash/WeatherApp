@@ -4,10 +4,6 @@ import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
-object Constants {
-    const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
-}
-
 fun getTempInCelsius(temp: Double): String {
     return "${(temp - 273.15).toString().substringBefore(".")}°C"
 }

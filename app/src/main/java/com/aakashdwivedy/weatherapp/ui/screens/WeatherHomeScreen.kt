@@ -11,6 +11,7 @@ import androidx.compose.ui.platform.LocalContext
 import com.aakashdwivedy.weatherapp.BuildConfig
 import com.aakashdwivedy.weatherapp.ui.components.LoadingScreen
 import com.aakashdwivedy.weatherapp.ui.components.WeatherHomeScreenUI
+import com.aakashdwivedy.weatherapp.utils.Constants
 import com.aakashdwivedy.weatherapp.utils.LocationData
 import com.aakashdwivedy.weatherapp.utils.LocationManager
 import com.aakashdwivedy.weatherapp.viewmodel.WeatherViewModel
@@ -24,6 +25,7 @@ fun WeatherHomeScreen() {
     val apiKey = BuildConfig.API_KEY
     val viewModel = remember { WeatherViewModel() }
     val weatherData by viewModel.weatherData.observeAsState()
+    val forecastData by viewModel.weatherForecast.observeAsState()
 
     // Collect location updates
     LaunchedEffect(locationManager) {
@@ -42,6 +44,12 @@ fun WeatherHomeScreen() {
     LaunchedEffect(locationData) {
         if (locationData.latitude != 0.0 && locationData.longitude != 0.0) {
             viewModel.fetchWeatherData(locationData.latitude, locationData.longitude, null, apiKey)
+            viewModel.fetchWeatherForecast(
+                locationData.latitude,
+                locationData.longitude,
+                "temperature_2m_max,temperature_2m_min",
+                "Asia/Kolkata"
+            )
         }
     }
 
@@ -52,5 +60,9 @@ fun WeatherHomeScreen() {
         }
     } else {
         LoadingScreen()
+    }
+
+    if (forecastData!=null) {
+        Constants.FORECAST_DATA = forecastData
     }
 }

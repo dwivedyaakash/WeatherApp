@@ -52,6 +52,7 @@ fun WeatherDetailsCard(weatherData: WeatherDataResponse) {
         R.drawable.arrow_up,
         true
     )
+    WeatherForecastCard()
     SquareWeatherCards(
         "Humidity",
         "Wind speed",

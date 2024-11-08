@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.aakashdwivedy.weatherapp.model.forecast.response.ForecastResponse
 import com.aakashdwivedy.weatherapp.model.response.WeatherDataResponse
 import com.aakashdwivedy.weatherapp.repository.WeatherApiRepository
 import kotlinx.coroutines.launch
@@ -14,6 +15,8 @@ class WeatherViewModel : ViewModel() {
 
     private val _weatherData = MutableLiveData<WeatherDataResponse>()
     val weatherData: LiveData<WeatherDataResponse> get() = _weatherData
+    private val _weatherForecast = MutableLiveData<ForecastResponse>()
+    val weatherForecast: LiveData<ForecastResponse> get() = _weatherForecast
 
     fun fetchWeatherData(latitude: Double?, longitude: Double?, city: String?, apiKey: String) {
         viewModelScope.launch {
@@ -23,6 +26,21 @@ class WeatherViewModel : ViewModel() {
                     _weatherData.value = response.body()
                 } else {
                     Log.e("API Error", "Error fetching weather data: ${response.code()}")
+                }
+            } catch (e: Exception) {
+                Log.e("Network Error", e.toString())
+            }
+        }
+    }
+
+    fun fetchWeatherForecast(latitude: Double, longitude: Double, daily: String, timezone: String) {
+        viewModelScope.launch {
+            try {
+                val response = repository.getWeatherForecast(latitude, longitude, daily, timezone)
+                if (response.isSuccessful) {
+                    _weatherForecast.value = response.body()
+                } else {
+                    Log.e("API Error", "Error fetching weather forecast: ${response.code()}")
                 }
             } catch (e: Exception) {
                 Log.e("Network Error", e.toString())
