@@ -9,3 +9,8 @@
 - Loading screen
 - API call using MVVM pattern
 - Search weather data by city name
+
+## Resources:
+
+- [API](https://openweathermap.org/current)
+- [Drawables](https://www.flaticon.com/)
