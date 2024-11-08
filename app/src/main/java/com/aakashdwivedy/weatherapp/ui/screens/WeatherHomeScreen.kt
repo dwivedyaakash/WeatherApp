@@ -11,7 +11,6 @@ import androidx.compose.ui.platform.LocalContext
 import com.aakashdwivedy.weatherapp.BuildConfig
 import com.aakashdwivedy.weatherapp.ui.components.LoadingScreen
 import com.aakashdwivedy.weatherapp.ui.components.WeatherHomeScreenUI
-import com.aakashdwivedy.weatherapp.utils.Constants
 import com.aakashdwivedy.weatherapp.utils.LocationData
 import com.aakashdwivedy.weatherapp.utils.LocationManager
 import com.aakashdwivedy.weatherapp.viewmodel.WeatherViewModel

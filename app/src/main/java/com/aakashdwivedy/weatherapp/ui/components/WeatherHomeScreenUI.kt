@@ -5,10 +5,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
@@ -22,9 +24,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Popup
 import com.aakashdwivedy.weatherapp.R
 import com.aakashdwivedy.weatherapp.model.forecast.response.ForecastResponse
 import com.aakashdwivedy.weatherapp.model.response.WeatherDataResponse
@@ -67,7 +69,20 @@ fun WeatherHomeScreenUI(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Popup(alignment = Alignment.TopEnd) {
+            Row(
+                Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    modifier = Modifier
+                        .weight(1f)
+                        .wrapContentWidth(Alignment.CenterHorizontally)
+                        .padding(start = 30.dp),
+                    text = weatherData.name,
+                    fontSize = 24.sp,
+                    textAlign = TextAlign.Center
+                )
                 Image(
                     modifier = Modifier
                         .size(30.dp)
@@ -80,10 +95,6 @@ fun WeatherHomeScreenUI(
                     contentDescription = "search"
                 )
             }
-            Text(
-                text = weatherData.name,
-                fontSize = 24.sp
-            )
             Text(
                 text = getTempInCelsius(weatherData.main.temp),
                 fontSize = 80.sp
