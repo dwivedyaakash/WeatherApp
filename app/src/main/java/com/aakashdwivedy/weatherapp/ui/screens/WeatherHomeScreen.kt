@@ -44,12 +44,6 @@ fun WeatherHomeScreen() {
     LaunchedEffect(locationData) {
         if (locationData.latitude != 0.0 && locationData.longitude != 0.0) {
             viewModel.fetchWeatherData(locationData.latitude, locationData.longitude, null, apiKey)
-            viewModel.fetchWeatherForecast(
-                locationData.latitude,
-                locationData.longitude,
-                Constants.DAILY,
-                "Asia/Kolkata"
-            )
         }
     }
 
@@ -57,12 +51,6 @@ fun WeatherHomeScreen() {
         WeatherHomeScreenUI(weatherData!!, forecastData!!) { query ->
             // Fetch weather data api call by city name
             viewModel.fetchWeatherData(null, null, query, apiKey)
-            viewModel.fetchWeatherForecast(
-                weatherData!!.coord.lat,
-                weatherData!!.coord.lon,
-                Constants.DAILY,
-                "Asia/Kolkata"
-            )
         }
     } else {
         LoadingScreen()

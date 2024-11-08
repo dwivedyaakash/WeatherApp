@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.aakashdwivedy.weatherapp.model.forecast.response.ForecastResponse
 import com.aakashdwivedy.weatherapp.model.response.WeatherDataResponse
 import com.aakashdwivedy.weatherapp.repository.WeatherApiRepository
+import com.aakashdwivedy.weatherapp.utils.Constants
 import kotlinx.coroutines.launch
 
 class WeatherViewModel : ViewModel() {
@@ -24,6 +25,14 @@ class WeatherViewModel : ViewModel() {
                 val response = repository.getWeatherData(latitude, longitude, city, apiKey)
                 if (response.isSuccessful) {
                     _weatherData.value = response.body()
+                    if (_weatherData.value?.coord?.lat != null && _weatherData.value?.coord?.lon != null) {
+                        fetchWeatherForecast(
+                            _weatherData.value?.coord?.lat!!,
+                            _weatherData.value?.coord?.lon!!,
+                            Constants.DAILY,
+                            "Asia/Kolkata"
+                        )
+                    }
                 } else {
                     Log.e("API Error", "Error fetching weather data: ${response.code()}")
                 }
@@ -33,7 +42,7 @@ class WeatherViewModel : ViewModel() {
         }
     }
 
-    fun fetchWeatherForecast(latitude: Double, longitude: Double, daily: String, timezone: String) {
+    private fun fetchWeatherForecast(latitude: Double, longitude: Double, daily: String, timezone: String) {
         viewModelScope.launch {
             try {
                 val response = repository.getWeatherForecast(latitude, longitude, daily, timezone)
