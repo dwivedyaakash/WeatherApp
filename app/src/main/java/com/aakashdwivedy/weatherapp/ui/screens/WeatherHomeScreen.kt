@@ -11,7 +11,6 @@ import androidx.compose.ui.platform.LocalContext
 import com.aakashdwivedy.weatherapp.BuildConfig
 import com.aakashdwivedy.weatherapp.ui.components.LoadingScreen
 import com.aakashdwivedy.weatherapp.ui.components.WeatherHomeScreenUI
-import com.aakashdwivedy.weatherapp.utils.Constants
 import com.aakashdwivedy.weatherapp.utils.LocationData
 import com.aakashdwivedy.weatherapp.utils.LocationManager
 import com.aakashdwivedy.weatherapp.viewmodel.WeatherViewModel
@@ -53,16 +52,12 @@ fun WeatherHomeScreen() {
         }
     }
 
-    if (weatherData != null) {
-        WeatherHomeScreenUI(weatherData!!) { query ->
+    if (weatherData != null && forecastData != null) {
+        WeatherHomeScreenUI(weatherData!!, forecastData!!) { query ->
             // Fetch weather data api call by city name
             viewModel.fetchWeatherData(null, null, query, apiKey)
         }
     } else {
         LoadingScreen()
-    }
-
-    if (forecastData!=null) {
-        Constants.FORECAST_DATA = forecastData
     }
 }

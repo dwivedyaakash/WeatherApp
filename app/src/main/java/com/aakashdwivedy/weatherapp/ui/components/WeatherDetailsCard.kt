@@ -19,12 +19,13 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aakashdwivedy.weatherapp.R
+import com.aakashdwivedy.weatherapp.model.forecast.response.ForecastResponse
 import com.aakashdwivedy.weatherapp.model.response.WeatherDataResponse
 import com.aakashdwivedy.weatherapp.utils.getFormattedTime
 import com.aakashdwivedy.weatherapp.utils.getTempInCelsius
 
 @Composable
-fun WeatherDetailsCard(weatherData: WeatherDataResponse) {
+fun WeatherDetailsCard(weatherData: WeatherDataResponse, forecastData: ForecastResponse) {
     Column(
         Modifier
             .fillMaxWidth()
@@ -52,7 +53,7 @@ fun WeatherDetailsCard(weatherData: WeatherDataResponse) {
         R.drawable.arrow_up,
         true
     )
-    WeatherForecastCard()
+    WeatherForecastCard(forecastData)
     SquareWeatherCards(
         "Humidity",
         "Wind speed",

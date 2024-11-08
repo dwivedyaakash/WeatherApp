@@ -6,14 +6,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.aakashdwivedy.weatherapp.utils.Constants
+import com.aakashdwivedy.weatherapp.model.forecast.response.ForecastResponse
 
 @Composable
-fun WeatherForecastCard() {
-    val forecastData = Constants.FORECAST_DATA
-
-    if (forecastData != null) {
-        Text(forecastData.timezone)
-    }
+fun WeatherForecastCard(forecastData: ForecastResponse) {
+    Text(forecastData.timezone)
     Spacer(Modifier.height(16.dp))
 }

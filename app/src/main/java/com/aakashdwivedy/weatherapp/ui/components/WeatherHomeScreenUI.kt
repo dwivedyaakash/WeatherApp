@@ -26,12 +26,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Popup
 import com.aakashdwivedy.weatherapp.R
+import com.aakashdwivedy.weatherapp.model.forecast.response.ForecastResponse
 import com.aakashdwivedy.weatherapp.model.response.WeatherDataResponse
 import com.aakashdwivedy.weatherapp.ui.theme.BgColor
 import com.aakashdwivedy.weatherapp.utils.getTempInCelsius
 
 @Composable
-fun WeatherHomeScreenUI(weatherData: WeatherDataResponse, makeApiCall: (String) -> Unit) {
+fun WeatherHomeScreenUI(
+    weatherData: WeatherDataResponse,
+    forecastData: ForecastResponse,
+    makeApiCall: (String) -> Unit
+) {
     val scrollState = rememberScrollState()
     var showSearchBar by remember { mutableStateOf(false) }
 
@@ -88,6 +93,6 @@ fun WeatherHomeScreenUI(weatherData: WeatherDataResponse, makeApiCall: (String) 
                 fontSize = 20.sp
             )
         }
-        WeatherDetailsCard(weatherData)
+        WeatherDetailsCard(weatherData, forecastData)
     }
 }
