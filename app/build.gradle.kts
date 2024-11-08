@@ -79,7 +79,6 @@ dependencies {
     implementation(libs.kotlinx.coroutines.play.services)
     // LiveData
     implementation(libs.androidx.runtime.livedata)
-    // Coil for image loading
-    implementation(libs.coil)
-
+    // Accompanist permissions
+    implementation(libs.accompanist.permissions)
 }
